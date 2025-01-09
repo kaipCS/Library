@@ -28,8 +28,7 @@ $conn->exec($sql);
     $stmt1->execute();
     $stmt1->closeCursor(); 
 
-    $stmt->execute();
-    $stmt->closeCursor();
+    
     $stmt = $conn->prepare("DROP TABLE IF EXISTS users;
     CREATE TABLE users
     (studentnumber VARCHAR(20) PRIMARY KEY,
