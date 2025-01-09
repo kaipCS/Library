@@ -16,7 +16,7 @@ $conn->exec($sql);
     echo "DB created successfully";
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS books;
     CREATE TABLE books 
-    (isbn VARCHAR(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    (isbn VARCHAR(20) PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     author VARCHAR(30) NOT NULL,
     genre VARCHAR(30) NOT NULL,
