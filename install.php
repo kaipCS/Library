@@ -16,19 +16,17 @@ $conn->exec($sql);
     echo "DB created successfully";
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS books;
     CREATE TABLE books 
-    (isbn INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(20) NOT NULL,
-    author VARCHAR(20) NOT NULL,
-    genre VARCHAR(20) NOT NULL,
-    description VARCHAR(200) NOT NULL,
-    cover VARCHAR(20) NOT NULL,
-    onloan VARCHAR(20) NOT NULL,
-    shelf VARCHAR(20) NOT NULL,
-    fictionornot VARCHAR(20) NOT NULL)");
+    (isbn VARCHAR(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(30) NOT NULL,
+    author VARCHAR(30) NOT NULL,
+    genre VARCHAR(30) NOT NULL,
+    description TEXT NOT NULL,
+    cover VARCHAR(30) NOT NULL,
+    onloan TINYINT(1) NOT NULL,
+    shelf INT(2) NOT NULL,
+    fictionornot TINYINT(1)NOT NULL)");
     $stmt1->execute();
     $stmt1->closeCursor(); 
-
-
 
 }
 catch(PDOException $e)
