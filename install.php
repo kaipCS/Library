@@ -28,6 +28,21 @@ $conn->exec($sql);
     $stmt1->execute();
     $stmt1->closeCursor(); 
 
+
+    $stmt = $conn->prepare("DROP TABLE IF EXISTS users;
+    CREATE TABLE users
+    (studentnumber VARCHAR(20) PRIMARY KEY,
+    firstname VARCHAR(20) NOT NULL,
+    surname VARCHAR(20) NOT NULL,
+    year INT(2) NOT NULL,
+    house VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    email VARCHAR(30) NOT NULL)
+    ");
+    $stmt->execute();
+    $stmt->closeCursor();
+
+
 }
 catch(PDOException $e)
 {
