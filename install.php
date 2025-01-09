@@ -16,7 +16,7 @@ $conn->exec($sql);
     echo "DB created successfully";
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS books;
     CREATE TABLE books 
-    (isbn VARCHAR(20),
+    (isbn VARCHAR(20) PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     author VARCHAR(30) NOT NULL,
     genre VARCHAR(30) NOT NULL,
@@ -27,6 +27,23 @@ $conn->exec($sql);
     fictionornot TINYINT(1)NOT NULL)");
     $stmt1->execute();
     $stmt1->closeCursor(); 
+
+    $stmt->execute();
+    $stmt->closeCursor();
+    $stmt = $conn->prepare("DROP TABLE IF EXISTS users;
+    CREATE TABLE users
+    (studentnumber VARCHAR(20) PRIMARY KEY,
+    firstname VARCHAR(20) NOT NULL,
+    surname VARCHAR(20) NOT NULL,
+    year INT(2) NOT NULL,
+    house VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    email VARCHAR(30) NOT NULL)
+    ");
+    $stmt->execute();
+    $stmt->closeCursor();
+    echo("<br>tblsubjects created");
+
 
 }
 catch(PDOException $e)
