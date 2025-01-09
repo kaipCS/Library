@@ -11,7 +11,7 @@ try {
     $sql = "CREATE DATABASE IF NOT EXISTS library;
 
 $conn->exec($sql);
-    $sql = "USE Toilets";
+    $sql = "USE library";
     $conn->exec($sql);
     echo "DB created successfully";
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS books;
