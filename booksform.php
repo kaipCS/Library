@@ -4,8 +4,8 @@
   Author:<input type="text" name="author"><br>
   Genre:<input type="text" name="genre"><br>
   Description:<input type="text" name="description"><br>
-  Shelf Number:<input type="text" name="shelf"><br>
-  Fiction:<select name="gender">
+  Shelf Number:<input type="number" name="shelf"><br>
+  Fiction:<select name="fictionornot">
 		<option value="Y">Yes</option>
 		<option value="N">No</option>
 	</select>

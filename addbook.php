@@ -5,7 +5,8 @@ array_map("htmlspecialchars", $_POST);
 
 
 $stmt = $conn->prepare("INSERT INTO books (isbn,title,author,genre,description,cover,onloan,shelf,fictionornot )
-VALUES (null,:title,:author,:genre,:description,:cover,:onloan,:shelf,:fictionornot)");
+VALUES (null,:isbn,:title,:author,:genre,:description,:cover,:onloan,:shelf,:fictionornot)");
+$stmt->bindParam(':isbn', $_POST["isbn"]);
 $stmt->bindParam(':title', $_POST["title"]);
 $stmt->bindParam(':author', $_POST["author"]);
 $stmt->bindParam(':genre', $_POST["genre"]);
