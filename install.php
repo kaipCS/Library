@@ -13,10 +13,9 @@ try {
 $conn->exec($sql);
     $sql = "USE library";
     $conn->exec($sql);
-    echo "DB created successfully";
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS books;
     CREATE TABLE books 
-    (isbn VARCHAR(20) PRIMARY KEY,
+    (isbn VARCHAR(20) NOT NULL PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     author VARCHAR(30) NOT NULL,
     genre VARCHAR(30) NOT NULL,
@@ -27,8 +26,6 @@ $conn->exec($sql);
     fictionornot TINYINT(1)NOT NULL)");
     $stmt1->execute();
     $stmt1->closeCursor(); 
-
-
     $stmt = $conn->prepare("DROP TABLE IF EXISTS users;
     CREATE TABLE users
     (studentnumber VARCHAR(20) PRIMARY KEY,
@@ -41,8 +38,17 @@ $conn->exec($sql);
     ");
     $stmt->execute();
     $stmt->closeCursor();
-
-
+    $stmt = $conn->prepare("DROP TABLE IF EXISTS loans;
+    CREATE TABLE loans
+    (isbn VARCHAR(20) NOT NULL,
+    onloan TINYINT(1) NOT NULL,
+    studentnumber VARCHAR(20),
+    date  CHAR(1),
+    timeperiod INT(2),
+    PRIMARY KEY(isbn,studentnumber))
+    ");
+    $stmt->execute();
+    $stmt->closeCursor();
 }
 catch(PDOException $e)
 {
