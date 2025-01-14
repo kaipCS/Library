@@ -17,4 +17,5 @@ $stmt->bindParam(':shelf', $_POST["shelf"]);
 $stmt->bindParam(':fictionornot', $_POST["fictionornot"]);
 
 $stmt->execute();
+$conn=null;
 ?>
