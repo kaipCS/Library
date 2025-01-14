@@ -1,5 +1,5 @@
 <?php
-header('Location:subjects.php');
+header('Location:booksform.php');
 include_once('connection.php');
 array_map("htmlspecialchars", $_POST);
 
