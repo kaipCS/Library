@@ -1,4 +1,4 @@
-<form action="addbook.php" method = "POST">
+<form action="addbook.php" method="POST" enctype="multipart/form-data">
   ISBN:<input type="text" name="isbn"><br>
   Title:<input type="text" name="title"><br>
   Author:<input type="text" name="author"><br>
