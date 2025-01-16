@@ -4,6 +4,8 @@
   Author:<input type="text" name="author"><br>
   Genre:<input type="text" name="genre"><br>
   Description:<input type="text" name="description"><br>
+  Cover:<input type="text" name="cover"><br>
+  On loan? :<input type="text" name="onloan"><br>
   Shelf Number:<input type="number" name="shelf"><br>
   Fiction:<select name="fictionornot">
 		<option value="Y">Yes</option>
