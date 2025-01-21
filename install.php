@@ -43,7 +43,7 @@ $conn->exec($sql);
     (isbn VARCHAR(20) NOT NULL,
     onloan TINYINT(1) NOT NULL,
     studentnumber VARCHAR(20),
-    date  CHAR(1),
+    date  VARCHAR(20),
     timeperiod INT(2),
     PRIMARY KEY(isbn,studentnumber))
     ");
