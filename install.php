@@ -45,6 +45,7 @@ $conn->exec($sql);
     studentnumber VARCHAR(20),
     date  VARCHAR(20),
     timeperiod INT(2),
+    duedate VARCHAR(20),
     PRIMARY KEY(isbn,studentnumber))
     ");
     $stmt->execute();
