@@ -41,7 +41,7 @@ $conn->exec($sql);
     $stmt = $conn->prepare("DROP TABLE IF EXISTS loans;
     CREATE TABLE loans
     (isbn VARCHAR(20) NOT NULL,
-    onloan TINYINT(1) NOT NULL,
+    returned TINYINT(1) NOT NULL,
     studentnumber VARCHAR(20),
     date  VARCHAR(20),
     timeperiod INT(2),

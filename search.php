@@ -1,7 +1,7 @@
 <?php
 include_once ("connection.php");
 $isbnsearch = isset($_GET['isbnsearch']) ? $_GET['isbnsearch'] : '';
-$sql = "SELECT * FROM books WHERE isbn LIKE  ?";
+$sql = "SELECT * FROM books WHERE isbn LIKE ?";
 $stmt = $conn->prepare($sql);
 $searchTerm = "%{$isbnsearch}%";
 $stmt->bind_param('s', $searchTerm);
