@@ -1,5 +1,5 @@
 <?php
-header('Location:loaningbooks.php');
+#header('Location:loaningbooks.php');
 include_once('connection.php');
 array_map("htmlspecialchars", $_POST);
 

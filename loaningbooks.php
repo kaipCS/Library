@@ -30,7 +30,7 @@ while ($row = $stmt ->fetch(PDO::FETCH_ASSOC))
 
 <form method="post" action="">
     <label for="numbers">How many days would you like to loan the book?</label>
-    <select name="numbers" id="numbers">
+    <select name="timeperiod" id="timeperiod">
         <?php
     
         $start = 1;
