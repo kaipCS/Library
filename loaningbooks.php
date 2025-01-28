@@ -7,7 +7,7 @@ $stmt->execute();
 while ($row = $stmt ->fetch(PDO::FETCH_ASSOC))
     {
         #print_r($row);
-        echo("<option value =".$row["studentnumber"].">".$row["surname"].", ".$row["firstname"]."</option>"); 
+        echo("<option value =".$row["studentnumber"].">".$row["surname"].", ".$row["firstname"]."</option> "); 
     }
 ?>  
 
