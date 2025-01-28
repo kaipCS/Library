@@ -1,13 +1,11 @@
 <?php
 include_once ("connection.php");
-$isbnsearch = isset($_GET['isbnsearch']) ? $_GET['isbnsearch'] : '';
-$sql = "SELECT * FROM books WHERE isbn LIKE ?";
-$stmt = $conn->prepare($sql);
-$searchTerm = "%{$isbnsearch}%";
-$stmt->bind_param('s', $searchTerm);
-$stmt->execute();
-$result = $stmt->get_result();
-while ($row = $result->fetch_assoc()) {
-  echo 'Title: ' . $row['title'] . '<br />';
+$stmt = $conn -> prepare("SELECT * FROM books WHERE isbn =:isbnsearch");
+$stmt->bindParam(':isbnsearch', $_POST["isbnsearch"]);
+$stmt -> execute();
+while ($row = $stmt -> fetch(PDO::FETCH_ASSOC))
+{
+    echo($row["isbn"]. " ". $row["title"]." ". $row["author"]." ". $row["genre"]." ". $row["description"]." ". $row["cover"]." ". $row["onloan"]." ". $row["shelf"]." ". $row["fictionornot"]. "<br>");   
+    echo ('<img src="images/'.$row["cover"].'"><br>');
 }
 ?>
