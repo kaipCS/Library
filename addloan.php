@@ -11,12 +11,12 @@ $timePeriod = $_POST['timeperiod']; // time period (in days)
 $dueDate = date('Y-m-d', strtotime("+$timePeriod days", strtotime($loanDate)));
 
 // Prepare the SQL query to insert the loan record
-$stmt = $conn->prepare("INSERT INTO loans (isbn, onloan, studentnumber, date, timeperiod, duedate)
-VALUES (:isbn, :onloan, :studentnumber, :date, :timeperiod, :duedate)");
+$stmt = $conn->prepare("INSERT INTO loans (isbn, returned, studentnumber, date, timeperiod, duedate)
+VALUES (:isbn, :returned, :studentnumber, :date, :timeperiod, :duedate)");
 
 // Bind the parameters
 $stmt->bindParam(':isbn', $_POST["isbn"]);
-$stmt->bindParam(':onloan', $onloan = 1); // Assuming 1 means the book is on loan
+$stmt->bindParam(':returned', $returned = 1); // Assuming 1 means the book is on loan
 $stmt->bindParam(':studentnumber', $_POST["studentnumber"]);
 $stmt->bindParam(':date', $loanDate);
 $stmt->bindParam(':timeperiod', $_POST["timeperiod"]);
