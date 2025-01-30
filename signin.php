@@ -11,15 +11,15 @@
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($user && password_verify($password, $user['password'])) {
-                $_SESSION['studentnumber'] = $studentnumber;
-                if ($user['role'] == 'student') {
+                $_SESSION['studentnumber'] = $user['studentnumber'];
+                header ("Location: studentborrowed.php");
+               // if ($user['role'] == 'student') {
                     //header("Location: studentborrowed.php");
-                } else {
+                //} else {
                     //header("Location: teacherborrowed.php");
-                }
-                exit();
+               // }
             } else {
                 echo "<p style='color:red;'>Invalid login credentials.</p>";
-            }
+            };
     } 
 ?>
