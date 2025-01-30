@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-    <form class="form" method="post" name="login">
-        <h1 class="login-title">Login</h1>
-        <input type="text" class="login-input" name="studentnumber" placeholder="Student Number" required autofocus />
-        <input type="password" class="login-input" name="password" placeholder="Password" required />
-        <input type="submit" value="Login" name="submit" class="login-button"/>
-    </form>
-    <?php
+<?php
     session_start();
     include_once("connection.php");
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['studentnumber']) && isset($_POST['password'])) {
@@ -34,7 +22,4 @@
                 echo "<p style='color:red;'>Invalid login credentials.</p>";
             }
     } 
-    // the error message means not yet send not not correct
 ?>
-</body>
-</html>
