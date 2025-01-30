@@ -6,30 +6,34 @@
 <body>
 <?php
     session_start();
-    if (isset($_POST['studnetnumber'])) {
-        $studentnumber = stripslashes($_REQUEST['studentnumber']);  
-        $studentnumber = mysqli_real_escape_string($conn, $studentnumber);
-        $password = stripslashes($_REQUEST['password']);
-        $password = mysqli_real_escape_string($conn, $password);
-        $query    = "SELECT * FROM `users` WHERE studnetnumber='$studentnumber'
-                     AND password='" . md5($password) . "'";
-        $result = mysqli_query($cnon, $query) or die(mysql_error());
-        $rows = mysqli_num_rows($result);
-        if ($rows == 1) {
-            $_SESSION['studentnumber'] = $studentnumber;
-            header("Location: studentborrowed.php");
-        } 
-    } else {
+    include_once("connection.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['studentnumber']) && isset($_POST['password'])) {
+            $conn = new PDO("mysql:host=localhost;dbname=Library", "root", "");
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $studentnumber = trim($_POST['studentnumber']);
+            $password = trim($_POST['password']);
+            $stmt = $conn->prepare("SELECT * FROM users WHERE studentnumber = :studentnumber");
+            $stmt->bindParam(':studentnumber', $studentnumber, PDO::PARAM_STR);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($user && password_verify($password, $user['password'])) {
+                $_SESSION['studentnumber'] = $studentnumber;
+                if ($user['role'] == 'student') {
+                    //header("Location: studentborrowed.php");
+                } else {
+                    //header("Location: teacherborrowed.php");
+                }
+                exit();
+            } else {
+                echo "<p style='color:red;'>Invalid login credentials.</p>";
+            }
+    } 
 ?>
     <form class="form" method="post" name="login">
         <h1 class="login-title">Login</h1>
-        <input type="text" class="login-input" name="studentnumber" placeholder="Student Number" autofocus="true"/>
-        <input type="password" class="login-input" name="password" placeholder="Password"/>
+        <input type="text" class="login-input" name="studentnumber" placeholder="Student Number" required autofocus />
+        <input type="password" class="login-input" name="password" placeholder="Password" required />
         <input type="submit" value="Login" name="submit" class="login-button"/>
-  </form>
-<?php
-    }
-    // if student go to books borrowed page, if teacher go to list of books borrowed
-?>
+    </form>
 </body>
 </html>
