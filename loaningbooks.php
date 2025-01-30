@@ -20,7 +20,7 @@ $stmt->execute();
 while ($row = $stmt ->fetch(PDO::FETCH_ASSOC))
     {
         #print_r($row);
-        echo("<option value =" .$row["title"].">".$row["title"].", ".$row["author"]."</option>"); 
+        echo("<option value =" .$row["isbn"].">".$row["title"].", ".$row["author"]."</option>"); 
     }
 ?>  
 
@@ -28,7 +28,7 @@ while ($row = $stmt ->fetch(PDO::FETCH_ASSOC))
 
 
 
-<form method="post" action="">
+
     <label for="numbers">How many days would you like to loan the book?</label>
     <select name="timeperiod" id="timeperiod">
         <?php
