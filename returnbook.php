@@ -1,4 +1,4 @@
-<form action="addloan.php" method = "POST">
+<form action="" method = "POST">
 <select name = "student">
 <?php
 include_once("connection.php");
@@ -15,7 +15,7 @@ while ($row = $stmt ->fetch(PDO::FETCH_ASSOC))
 <select name = "book">
 <?php
 include_once("connection.php");
-$stmt = $conn->prepare("SELECT * FROM books ORDER BY title ASC");
+$stmt = $conn->prepare("SELECT * FROM books where onloan = 1 ORDER BY title ASC");
 $stmt->execute();
 while ($row = $stmt ->fetch(PDO::FETCH_ASSOC))
     {
@@ -23,24 +23,12 @@ while ($row = $stmt ->fetch(PDO::FETCH_ASSOC))
         echo("<option value =" .$row["isbn"].">".$row["title"].", ".$row["author"]."</option>"); 
     }
 ?>  
-
-</select>
-
-
-
-
-    <label for="numbers">How many days would you like to loan the book?</label>
-    <select name="timeperiod" id="timeperiod">
-        <?php
-    
-        $start = 1;
-        $end = 15;
-
-        
-        for ($i = $start; $i <= $end; $i++) {
-            echo "<option value=\"$i\">$i</option>";
-        }
-        ?>
     </select>
-    <input type="submit" value="Loan Book">
+    <input type="submit" value="Return Book">
 </form>
+
+<?php
+$updateStmt = $conn->prepare("UPDATE books SET onloan = 0 WHERE isbn = :isbn");
+$updateStmt->bindParam(':isbn', $_POST["book"]);
+$updateStmt->execute();
+?>
