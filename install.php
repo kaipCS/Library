@@ -33,7 +33,7 @@ $conn->exec($sql);
     surname VARCHAR(20) NOT NULL,
     year INT(2) NOT NULL,
     house VARCHAR(20) NOT NULL,
-    password VARCHAR(20) NOT NULL,
+    password VARCHAR(200) NOT NULL,
     email VARCHAR(30) NOT NULL)
     ");
     $stmt->execute();
