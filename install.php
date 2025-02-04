@@ -34,7 +34,8 @@ $conn->exec($sql);
     year INT(2) NOT NULL,
     house VARCHAR(20) NOT NULL,
     password VARCHAR(200) NOT NULL,
-    email VARCHAR(30) NOT NULL)
+    email VARCHAR(30) NOT NULL
+    role TINYINT(1) NOT NULL)
     ");
     $stmt->execute();
     $stmt->closeCursor();
