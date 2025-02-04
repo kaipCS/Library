@@ -28,7 +28,7 @@ $conn->exec($sql);
     $stmt1->closeCursor(); 
     $stmt = $conn->prepare("DROP TABLE IF EXISTS users;
     CREATE TABLE users
-    (studentnumber VARCHAR(20) PRIMARY KEY,
+    (accountnumber VARCHAR(20) PRIMARY KEY,
     firstname VARCHAR(20) NOT NULL,
     surname VARCHAR(20) NOT NULL,
     year INT(2) NOT NULL,
@@ -42,11 +42,11 @@ $conn->exec($sql);
     CREATE TABLE loans
     (isbn VARCHAR(20) NOT NULL,
     returned TINYINT(1) NOT NULL,
-    studentnumber VARCHAR(20),
+    accountnumber VARCHAR(20),
     date  VARCHAR(20),
     timeperiod INT(2),
     duedate VARCHAR(20),
-    PRIMARY KEY(isbn,studentnumber))
+    PRIMARY KEY(isbn,accountnumber))
     ");
     $stmt->execute();
     $stmt->closeCursor();

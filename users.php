@@ -5,6 +5,6 @@ $stmt -> execute();
 while ($row = $stmt -> fetch(PDO::FETCH_ASSOC))
 {                                                     
 #print_r($row);                                                       
-echo($row["studentnumber"]. " ". $row["firstname"]." ". $row["surname"]." ". $row["year"]." ". $row["house"]." ". $row["password"]." ". $row["email"]. "<br>");                                                                                                              
+echo($row["accountnumber"]. " ". $row["firstname"]." ". $row["surname"]." ". $row["year"]." ". $row["house"]." ". $row["password"]." ". $row["email"]. "<br>");                                                                                                              
 }                           
 ?>   

@@ -7,7 +7,7 @@
 </head>
 <body>
 <form action="addusers.php" method = "POST" >
-  Student number:<input type="text" name="studentnumber"><br>
+  Student number:<input type="text" name="accountnumber"><br>
   Last name:<input type="text" name="surname"><br>
   First name:<input type="text" name="firstname"><br>
   Password:<input type="password" name="password"><br>
