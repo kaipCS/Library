@@ -62,36 +62,16 @@
 
 
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right">
-          <li><a href="frontpage.php">Library home</a></li>
-          <li><a href="searchform.php">Search</a></li>
-          <li><a href="signinform.php">Sign in</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-
     <form class="form" action="signin.php" method="post" name="login">
     <div class="jumbotron text-center">
     <h1>Sign in to your account</h1>
     <div class="container">
-    <label for="uname"><b>Student number</b></label>
-    <input type="text" class="login-input" name="accountnumber" placeholder="Student Number">
+    <label for="uname"><b>Account number</b></label>
+    <input type="text" class="login-input" name="accountnumber" placeholder="Account Number">
     <label for="psw"><b>Password</b></label>
     <input  type="password" class="login-input" name="password" placeholder="Password">
 
     <button input type="submit" value="Login" name="submit" class="login-button">Login</button>
     </div>
     </form>
-    </body>
+</body>
