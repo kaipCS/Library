@@ -31,10 +31,8 @@ $conn->exec($sql);
     (accountnumber VARCHAR(20) PRIMARY KEY,
     firstname VARCHAR(20) NOT NULL,
     surname VARCHAR(20) NOT NULL,
-    year INT(2) NOT NULL,
-    house VARCHAR(20) NOT NULL,
     password VARCHAR(200) NOT NULL,
-    email VARCHAR(30) NOT NULL
+    email VARCHAR(30) NOT NULL,
     role TINYINT(1) NOT NULL)
     ");
     $stmt->execute();
