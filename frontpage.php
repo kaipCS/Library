@@ -1,49 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Website Layout</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Header</h1>
+</div>
+
+<div class="topnav">
+  <a href="#">Home</a>
+  <a href="#">Search</a>
+  <a href="#">Account</a>
+</div>
+
+</body>
+</html>
+
     
-    .navbar {
-      margin-bottom: 0;
-      background-color: gray;
-      border: 20px;
-      font-size: 11px !important;
-      letter-spacing: 2px;
-      opacity: 1;
-    }
-    
-    .navbar li a, .navbar .navbar-brand {
-      color: #ffffff!important;
-    }
-    
-    .navbar-default .navbar-toggle {
-      border-color: transparent;
-    }
-    
-    .open .dropdown-toggle {
-      color: #fff;
-      background-color: gray !important;
-    }
-    
-    .dropdown-menu li a {
-      color: gray !important;
-    }
-    </style>
-    
-    
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#search">Search</a></li>
-            <li><a href="#account">Account</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
     
