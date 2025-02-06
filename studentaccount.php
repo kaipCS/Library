@@ -80,6 +80,11 @@
     </style>
 </head>
 <body>
+<?php
+        session_start(); 
+        include_once("connection.php");
+        $accountnumber = $_SESSION['accountnumber'];
+?>
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -101,19 +106,17 @@
 
                 <form class="navbar-form navbar-right" action="search.php" method="POST">
                     <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
+                    <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
                     <button type="submit" class="btn btn-default">Search</button>
-
                 </form>
             </div>
         </div>
     </nav>
 
+
     <div class="container">
         <h2>Books on Loan</h2>
         <?php
-        session_start(); 
-        include_once("connection.php");
-        $accountnumber = $_SESSION['accountnumber'];
         $stmt = $conn->prepare("SELECT * FROM loans WHERE accountnumber = $accountnumber and returned = 1 ");
         // select isbn
         $stmt->execute();
@@ -121,6 +124,7 @@
             $isbn = $row['isbn'];
             $stmt2 = $conn->prepare("SELECT * FROM books WHERE isbn = $isbn");
             $stmt2->execute();
+
             while ($row = $stmt2->fetch(PDO::FETCH_ASSOC)) {
               echo "<p>{$row['title']} by {$row['author']}</p>";
               echo "<img src='images/{$row['cover']}' alt='Book Cover' style='width:200px;'><br>";
