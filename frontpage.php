@@ -57,6 +57,14 @@ body {
 
 </body>
 </html>
+    <?php
+include_once ("connection.php");
+$stmt = $conn -> prepare("SELECT * FROM books");
+$stmt -> execute();
+while ($row = $stmt -> fetch(PDO::FETCH_ASSOC))
 
-    
-    
+{
+    echo($row["title"]." ". $row["author"]." ". $row["genre"]." ". $row["description"]." ". $row["shelf"]." ". "<br>");   
+    echo ('<img src="images/'.$row["cover"].'"><br>');
+}
+?>   
