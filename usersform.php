@@ -11,7 +11,7 @@
   Last name:<input type="text" name="surname"><br>
   First name:<input type="text" name="firstname"><br>
   Password:<input type="password" name="password"><br>
-  Email:<iSnput type="text" name="email"><br>
+  Email:<input type="text" name="email"><br>
   Role:<select name="role">
 		<option value="T">Teacher</option>
 		<option value="S">Student</option>
