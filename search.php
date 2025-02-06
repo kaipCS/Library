@@ -102,7 +102,7 @@
 
                 <form class="navbar-form navbar-right" action="search.php" method="POST">
                     <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
-                    <input type="hidden" name="accountnumber" value="<?php $_POST["accountnumber"]; ?>">
+                    <input type="hidden" name="accountnumber" value="<?php echo isset($_POST['accountnumber']) ? $_POST['accountnumber'] : ''; ?>">
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
 
@@ -114,6 +114,7 @@
         <h2>Search result:</h2>
         <?php
         include_once ("connection.php");
+        //print_r($_POST);
         $stmt = $conn -> prepare("SELECT * FROM books WHERE isbn =:isbnsearch");
         $stmt->bindParam(':isbnsearch', $_POST["isbnsearch"]);
         $stmt -> execute();
@@ -123,12 +124,27 @@
               echo "<img src='images/{$row['cover']}' alt='Book Cover' style='width:200px;'><br>";
             
             if ($row['onloan'] == 0) {
-                echo "Avaliable";
-                // not displaying  post
-                echo $_POST["accountnumber"];
+                echo "How many days would you like to loan the book for? ";
+                echo '
+
+                <form action="addloan.php" method = "POST">
+                <input type="hidden" name= "accountnumber" value = $_POST["accountnumber"]">
+                <input type="hidden" name= "isbn" value = $_POST["isbnsearch"]">
+
+                <select name="number" id="number">
+                    <option value="7">7</option>
+                    <option value="14">14</option>
+                    <option value="21">21</option>
+                    </select>
+                    <input type="submit" value="Loan Book">
+                </form>
+ 
+                ';
+                //echo $_POST["accountnumber"];
               }
             else{
-                echo "on loan";
+                echo "This book is currently on loan";
+                //echo $_POST["accountnumber"];
             }
         }
         ?>

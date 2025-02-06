@@ -104,7 +104,7 @@
                     <li><a href="signinform.php">Sign Out</a></li>
                 </ul>
 
-                <form class="navbar-form navbar-right" action="search.php" method="POST">
+                <form class="navbar-form navbar-right" action="search.php" method="post">
                     <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
                     <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
                     <button type="submit" class="btn btn-default">Search</button>
@@ -119,7 +119,6 @@
         <h2>Books on Loan</h2>
         <?php
         $stmt = $conn->prepare("SELECT * FROM loans WHERE accountnumber = $accountnumber and returned = 1 ");
-        // select isbn
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $isbn = $row['isbn'];
