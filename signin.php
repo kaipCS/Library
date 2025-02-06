@@ -14,9 +14,17 @@
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['accountnumber'] = $user['accountnumber'];
                if ($user['role'] == '0') {
+                    session_start();
+                    $_SESSION['accountnumber'] = $accountnumber;
+                    $_SESSION['role'] = 0;
                     header("Location: studentaccount.php");
+                    exit();
                 } else {
+                    session_start();
+                    $_SESSION['accountnumber'] = $accountnumber;
+                    $_SESSION['role'] = 1;
                     header("Location: teacheraccount.php");
+                    exit();
                 }
                exit();
             } else {
