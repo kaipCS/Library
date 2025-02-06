@@ -73,9 +73,9 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#home">Home </a></li>
-            <li><a href="#search">Search</a></li>
-            <li><a href="#account">Account</a></li>
+          <li><a href="frontpage.php">Library home</a></li>
+          <li><a href="searchform.php">Search</a></li>
+          <li><a href="signinform.php">Sign in</a></li>
           </ul>
         </div>
       </div>
