@@ -100,7 +100,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="frontpage.php">Library Home</a></li>
-                    <li><a href="returnbook.php">Return</a></li>
+                    <li><a href="returnbook.php?accountnumber=<?php echo $accountnumber; ?>">Return</a></li>
                     <li><a href="signinform.php">Sign Out</a></li>
                 </ul>
 

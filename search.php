@@ -1,3 +1,14 @@
+<?php
+session_start();
+include_once("connection.php");
+
+if (isset($_POST['accountnumber']) && !empty($_POST['accountnumber'])) {
+    $_SESSION['accountnumber'] = $_POST['accountnumber'];
+}
+$accountnumber = isset($_SESSION['accountnumber']) ? $_SESSION['accountnumber'] : '';
+
+?>
+
 <!DOCTYPE html>
 <head>
     <title>Search result </title>
@@ -76,59 +87,50 @@
     margin-top: 90px; 
 }
 
+</style>
 
-    </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Library</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="frontpage.php">Library Home</a></li>
-                    <li><a href="returnbook.php">Return</a></li>
-                    <li><a href="signinform.php">Sign Out</a></li>
-                </ul>
-
-
-                <form class="navbar-form navbar-right" action="search.php" method="POST">
-                    <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
-                    <input type="hidden" name="accountnumber" value="<?php echo isset($_POST['accountnumber']) ? $_POST['accountnumber'] : ''; ?>">
-                    <button type="submit" class="btn btn-default">Search</button>
-                </form>
-
-            </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Library</a>
         </div>
-    </nav>
 
-    <div class="container">
-        <h2>Search result:</h2>
-        <?php
-        include_once ("connection.php");
-        //print_r($_POST);
-        $stmt = $conn -> prepare("SELECT * FROM books WHERE isbn =:isbnsearch");
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="frontpage.php">Library Home</a></li>
+                <li><a href="returnbook.php?accountnumber=<?php echo urlencode($accountnumber); ?>">Return</a></li>
+                <li><a href="signinform.php">Sign Out</a></li>
+            </ul>
+
+            <form class="navbar-form navbar-right" action="search.php" method="POST">
+                <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
+                <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>Search result:</h2>
+    <?php
+    if (isset($_POST["isbnsearch"])) {
+        $stmt = $conn->prepare("SELECT * FROM books WHERE isbn = :isbnsearch");
         $stmt->bindParam(':isbnsearch', $_POST["isbnsearch"]);
-        $stmt -> execute();
-        while ($row = $stmt -> fetch(PDO::FETCH_ASSOC))
-        {
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<p>{$row['title']} by {$row['author']} at shelf number {$row['shelf']}</p>";
-              echo "<img src='images/{$row['cover']}' alt='Book Cover' style='width:200px;'><br>";
-            
+            echo "<img src='images/{$row['cover']}' alt='Book Cover' style='width:200px;'><br>";
+
             if ($row['onloan'] == 0) {
                 echo "Loan book: ";
-                //print_r($_POST);
                 echo "
                 <form action='addloan.php' method='POST'>
-                    <input type='hidden' name='accountnumber' value='{$_POST['accountnumber']}'>
+                    <input type='hidden' name='accountnumber' value='$accountnumber'>
                     <input type='hidden' name='isbn' value='{$_POST['isbnsearch']}'>
                     
                     <label for='timeperiod'>How many days would you like to loan the book for?</label>
@@ -140,15 +142,13 @@
                     <input type='submit' value='Loan Book'>
                 </form>
                 ";
-                //echo $_POST["accountnumber"];
-              }
-            else{
+            } else {
                 echo "This book is currently on loan";
-                //echo $_POST["accountnumber"];
             }
         }
-        ?>
-    </div>
+    }
+    ?>
+</div>
 
 </body>
 </html>
