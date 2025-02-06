@@ -81,8 +81,8 @@
         </div>
       </div>
     </nav>
-
         <?php
+        // display all books this student has on loan
     include_once ("connection.php");
     $stmt = $conn -> prepare("SELECT * FROM books");
     $stmt -> execute();
