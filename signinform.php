@@ -86,8 +86,8 @@
     <div class="jumbotron text-center">
     <h1>Sign in to your account</h1>
     <div class="container">
-    <label for="uname"><b>Student number</b></label>
-    <input type="text" class="login-input" name="accountnumber" placeholder="Student Number">
+    <label for="uname"><b>Account number</b></label>
+    <input type="text" class="login-input" name="accountnumber" placeholder="Account Number">
     <label for="psw"><b>Password</b></label>
     <input  type="password" class="login-input" name="password" placeholder="Password">
 

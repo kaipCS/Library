@@ -5,7 +5,7 @@
             
             $accountnumber = trim($_POST['accountnumber']);
             $password = trim($_POST['password']);
-            print_r($_POST);
+            //print_r($_POST);
             $stmt = $conn->prepare("SELECT * FROM users WHERE accountnumber = :accountnumber");
             $stmt->bindParam(':accountnumber', $accountnumber, PDO::PARAM_STR);
             $stmt->execute();
@@ -21,7 +21,8 @@
                // }
                exit();
             } else {
-                echo "<p style='color:red;'>Invalid login credentials.</p>";
+                //echo "<p style='color:red;'>Invalid login credentials.</p>";
+                header('Location:signinform.php');
             }
     } 
 ?>
