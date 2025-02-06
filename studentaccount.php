@@ -82,17 +82,17 @@
       </div>
     </nav>
 
+        <?php
+    include_once ("connection.php");
+    $stmt = $conn -> prepare("SELECT * FROM books");
+    $stmt -> execute();
+    while ($row = $stmt -> fetch(PDO::FETCH_ASSOC))
 
-    <form class="form" action="signin.php" method="post" name="login">
-    <div class="jumbotron text-center">
-    <h1>Sign in to your account</h1>
-    <div class="container">
-    <label for="uname"><b>Account number</b></label>
-    <input type="text" class="login-input" name="accountnumber" placeholder="Account Number">
-    <label for="psw"><b>Password</b></label>
-    <input  type="password" class="login-input" name="password" placeholder="Password">
-
-    <button input type="submit" value="Login" name="submit" class="login-button">Login</button>
+    {
+        echo($row["isbn"]. " ". $row["title"]." ". $row["author"]." ". $row["genre"]." ". $row["description"]." ". $row["cover"]." ". $row["onloan"]." ". $row["shelf"]." ". $row["fictionornot"]. "<br>");   
+        echo ('<img src="images/'.$row["cover"].'"><br>');
+    }
+    ?>   
     </div>
     </form>
     </body>

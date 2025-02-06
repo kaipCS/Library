@@ -13,7 +13,7 @@
             print_r($user);
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['accountnumber'] = $user['accountnumber'];
-               if ($user['role'] == 'student') {
+               if ($user['role'] == '0') {
                     header("Location: studentaccount.php");
                 } else {
                     header("Location: teacheraccount.php");
