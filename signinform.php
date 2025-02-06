@@ -73,7 +73,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#home">Home</a></li>
+            <li><a href="#home">Home </a></li>
             <li><a href="#search">Search</a></li>
             <li><a href="#account">Account</a></li>
           </ul>
