@@ -1,5 +1,7 @@
 <?php
-header('Location:loaningbooks.php');
+//header('Location:search.php');
+// send back with the information still
+print($_POST);
 include_once('connection.php');
 array_map("htmlspecialchars", $_POST);
 

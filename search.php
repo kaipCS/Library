@@ -124,22 +124,22 @@
               echo "<img src='images/{$row['cover']}' alt='Book Cover' style='width:200px;'><br>";
             
             if ($row['onloan'] == 0) {
-                echo "How many days would you like to loan the book for? ";
-                echo '
-
-                <form action="addloan.php" method = "POST">
-                <input type="hidden" name= "accountnumber" value = $_POST["accountnumber"]">
-                <input type="hidden" name= "isbn" value = $_POST["isbnsearch"]">
-
-                <select name="number" id="number">
-                    <option value="7">7</option>
-                    <option value="14">14</option>
-                    <option value="21">21</option>
+                echo "Loan book: ";
+                //print_r($_POST);
+                echo "
+                <form action='addloan.php' method='POST'>
+                    <input type='hidden' name='accountnumber' value='{$_POST['accountnumber']}'>
+                    <input type='hidden' name='isbn' value='{$_POST['isbnsearch']}'>
+                    
+                    <label for='timeperiod'>How many days would you like to loan the book for?</label>
+                    <select name='timeperiod' id='timeperiod'>
+                        <option value='7'>7</option>
+                        <option value='14'>14</option>
+                        <option value='21'>21</option>
                     </select>
-                    <input type="submit" value="Loan Book">
+                    <input type='submit' value='Loan Book'>
                 </form>
- 
-                ';
+                ";
                 //echo $_POST["accountnumber"];
               }
             else{
