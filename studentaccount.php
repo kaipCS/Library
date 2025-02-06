@@ -118,7 +118,7 @@
     <div class="container">
         <h2>Books on Loan</h2>
         <?php
-        $stmt = $conn->prepare("SELECT * FROM loans WHERE accountnumber = $accountnumber and returned = 1 ");
+        $stmt = $conn->prepare("SELECT * FROM loans WHERE accountnumber = $accountnumber and returned = 0 ");
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $isbn = $row['isbn'];

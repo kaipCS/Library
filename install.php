@@ -45,7 +45,7 @@ $conn->exec($sql);
     date  VARCHAR(20),
     timeperiod INT(2),
     duedate VARCHAR(20),
-    PRIMARY KEY(isbn,accountnumber))
+    PRIMARY KEY(isbn,accountnumber,date))
     ");
     $stmt->execute();
     $stmt->closeCursor();

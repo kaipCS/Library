@@ -118,7 +118,7 @@
     <div class="container">
         <h2>Return a book </h2>
 <?php
-$stmt = $conn->prepare("SELECT * FROM loans WHERE accountnumber = $accountnumber AND returned = 1");
+$stmt = $conn->prepare("SELECT * FROM loans WHERE accountnumber = $accountnumber AND returned = 0");
     
 $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
