@@ -1,5 +1,5 @@
 <head>
-    <title>Account</title>
+    <title>Student account</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -62,6 +62,27 @@
 
 
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+          <li><a href="frontpage.php">Library home</a></li>
+          <li><a href="searchform.php">Search</a></li>
+          <li><a href="returnbook.php">Return</a></li>
+          <li><a href="signinform.php">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
     <form class="form" action="signin.php" method="post" name="login">
     <div class="jumbotron text-center">
     <h1>Sign in to your account</h1>
@@ -74,4 +95,4 @@
     <button input type="submit" value="Login" name="submit" class="login-button">Login</button>
     </div>
     </form>
-</body>
+    </body>

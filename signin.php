@@ -13,12 +13,11 @@
             print_r($user);
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['accountnumber'] = $user['accountnumber'];
-                header ("Location: studentborrowed.php");
-               // if ($user['role'] == 'student') {
-                    //header("Location: studentborrowed.php");
-                //} else {
-                    //header("Location: books.php");
-               // }
+               if ($user['role'] == 'student') {
+                    header("Location: studentaccount.php");
+                } else {
+                    header("Location: teacheraccount.php");
+                }
                exit();
             } else {
                 //echo "<p style='color:red;'>Invalid login credentials.</p>";
