@@ -121,11 +121,12 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
                     <li><a href="signinform.php">Sign Out</a></li>
                 </ul>
 
-                <form class="navbar-form navbar-right" action="search.php" method="post">
+                <form class="navbar-form navbar-right" action="search.php" method="get">
                     <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
                     <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
                     <input type="hidden" name="role" value="<?php echo $role; ?>">
                     <button type="submit" class="btn btn-default">Search</button>
+                </form>
                 </form>
             </div>
         </div>
@@ -153,11 +154,12 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
                     <li><a href="usersform.php?accountnumber=<?php echo $accountnumber; ?>">Add user</a></li>
                 </ul>
 
-                <form class="navbar-form navbar-right" action="search.php" method="post">
+                <form class="navbar-form navbar-right" action="search.php" method="get">
                     <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
                     <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
                     <input type="hidden" name="role" value="<?php echo $role; ?>">
                     <button type="submit" class="btn btn-default">Search</button>
+                </form>
                 </form>
             </div>
         </div>
@@ -167,9 +169,9 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
 <div class="container">
     <h2>Search result:</h2>
     <?php
-    if (isset($_POST["isbnsearch"])) {
+    if (isset($_GET["isbnsearch"])) {
         $stmt = $conn->prepare("SELECT * FROM books WHERE isbn = :isbnsearch");
-        $stmt->bindParam(':isbnsearch', $_POST["isbnsearch"]);
+        $stmt->bindParam(':isbnsearch', $_GET["isbnsearch"]);
         $stmt->execute();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -182,7 +184,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
                 <form action='addloan.php' method='POST'>
                     <input type='hidden' name='accountnumber' value='$accountnumber'>
                     <input type='hidden' name='role' value='$role'>
-                    <input type='hidden' name='isbn' value='{$_POST['isbnsearch']}'>
+                    <input type='hidden' name='isbn' value='{$_GET['isbnsearch']}'>
                     
                     <label for='timeperiod'>How many days would you like to loan the book for?</label>
                     <select name='timeperiod' id='timeperiod'>

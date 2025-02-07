@@ -107,11 +107,12 @@
                     <li><a href="usersform.php?accountnumber=<?php echo $accountnumber; ?>">Add user</a></li>
                 </ul>
 
-                <form class="navbar-form navbar-right" action="search.php" method="post">
+                <form class="navbar-form navbar-right" action="search.php" method="get">
                     <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
                     <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
                     <input type="hidden" name="role" value="<?php echo $role; ?>">
                     <button type="submit" class="btn btn-default">Search</button>
+                </form>
                 </form>
             </div>
         </div>
