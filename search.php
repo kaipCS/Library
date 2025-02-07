@@ -134,8 +134,9 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
 <?php } ?>
 
 
-<?php if ($role === '1') { ?>
-    <div class="container-fluid">
+<?php if ($role == '1') { ?>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
@@ -159,7 +160,6 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
                     <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
                     <input type="hidden" name="role" value="<?php echo $role; ?>">
                     <button type="submit" class="btn btn-default">Search</button>
-                </form>
                 </form>
             </div>
         </div>

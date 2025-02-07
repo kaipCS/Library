@@ -115,7 +115,6 @@
                     <input type="hidden" name="role" value="<?php echo $role; ?>">
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
-                </form>
             </div>
         </div>
     </nav>
