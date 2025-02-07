@@ -83,7 +83,7 @@
   <?php
   include_once("connection.php");
   $accountnumber = $_GET['accountnumber'];
-  $accountnumber = $_GET['role'];
+  $role = $_GET['role'];
   ?>
 </head>
 <body>
