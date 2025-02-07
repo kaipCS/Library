@@ -84,6 +84,7 @@
         session_start(); 
         include_once("connection.php");
         $accountnumber = $_SESSION['accountnumber'];
+        $role = 0;
 ?>
 
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -100,13 +101,14 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="frontpage.php">Library Home</a></li>
-                    <li><a href="returnbook.php?accountnumber=<?php echo $accountnumber; ?>">Return</a></li>
+                    <li><a href="returnbook.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Return</a></li>
                     <li><a href="signinform.php">Sign Out</a></li>
                 </ul>
 
                 <form class="navbar-form navbar-right" action="search.php" method="post">
                     <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
                     <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
+                    <input type="hidden" name="role" value="<?php echo $role; ?>">
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
             </div>

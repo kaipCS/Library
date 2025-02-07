@@ -3,7 +3,7 @@ session_start();
 print_r($_SESSION);
 print_r($_POST);
 
-header('Location: usersform.php');
+header('Location: teacheraccount.php');
 
 switch($_POST["role"]){
     case "S":

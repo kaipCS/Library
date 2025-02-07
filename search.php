@@ -7,6 +7,11 @@ if (isset($_POST['accountnumber']) && !empty($_POST['accountnumber'])) {
 }
 $accountnumber = isset($_SESSION['accountnumber']) ? $_SESSION['accountnumber'] : '';
 
+if (isset($_POST['role']) && !empty($_POST['role'])) {
+    $_SESSION['role'] = $_POST['role'];
+}
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
+
 ?>
 
 <!DOCTYPE html>
@@ -89,30 +94,75 @@ $accountnumber = isset($_SESSION['accountnumber']) ? $_SESSION['accountnumber'] 
 
 </style>
 
+<?php
+    $role = $_GET['role'];
+    $accountnumber = $_GET['accountnumber'];
+?>
+
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<?php if ($role === '0') { ?>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Library</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="frontpage.php">Library Home</a></li>
+                    <li><a href="returnbook.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Return</a></li>
+                    <li><a href="signinform.php">Sign Out</a></li>
+                </ul>
+
+                <form class="navbar-form navbar-right" action="search.php" method="post">
+                    <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
+                    <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
+                    <input type="hidden" name="role" value="<?php echo $role; ?>">
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+<?php } ?>
+
+
+<?php if ($role === '1') { ?>
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Library</a>
-        </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Library</a>
+            </div>
 
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="frontpage.php">Library Home</a></li>
-                <li><a href="returnbook.php?accountnumber=<?php echo urlencode($accountnumber); ?>">Return</a></li>
-                <li><a href="signinform.php">Sign Out</a></li>
-            </ul>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="frontpage.php">Library Home</a></li>
+                    <li><a href="returnbook.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Return</a></li>
+                    <li><a href="signinform.php">Sign Out</a></li>
+                    <li><a href="booksform.php?accountnumber=<?php echo $accountnumber; ?>">Add book</a></li>
+                    <li><a href="usersform.php?accountnumber=<?php echo $accountnumber; ?>">Add user</a></li>
+                </ul>
 
-            <form class="navbar-form navbar-right" action="search.php" method="POST">
-                <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
-                <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
-                <button type="submit" class="btn btn-default">Search</button>
-            </form>
+                <form class="navbar-form navbar-right" action="search.php" method="post">
+                    <input type="text" name="isbnsearch" placeholder="Search by ISBN..." class="form-control">
+                    <input type="hidden" name="accountnumber" value="<?php echo $accountnumber; ?>">
+                    <input type="hidden" name="role" value="<?php echo $role; ?>">
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+<?php } ?>
 
 <div class="container">
     <h2>Search result:</h2>
@@ -131,6 +181,7 @@ $accountnumber = isset($_SESSION['accountnumber']) ? $_SESSION['accountnumber'] 
                 echo "
                 <form action='addloan.php' method='POST'>
                     <input type='hidden' name='accountnumber' value='$accountnumber'>
+                    <input type='hidden' name='role' value='$role'>
                     <input type='hidden' name='isbn' value='{$_POST['isbnsearch']}'>
                     
                     <label for='timeperiod'>How many days would you like to loan the book for?</label>
