@@ -1,5 +1,14 @@
 <?php
-header('Location:studentaccount.php');
+// change header and pass correct role
+$role = $_POST["role"];
+if ($role === '0') {
+    header('Location: studentaccount.php');
+    exit(); 
+} elseif ($role === '1') {
+    header('Location: teacheraccount.php');
+    exit(); 
+}
+
 // send back with the information still
 include_once('connection.php');
 array_map("htmlspecialchars", $_POST);
