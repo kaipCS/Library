@@ -155,7 +155,7 @@
 <?php } ?>
 
     <div class="container">
-        <h2>Books in library - use  </h2>
+        <h2>Books in library  </h2>
     <?php
 include_once ("connection.php");
 $stmt = $conn -> prepare("SELECT * FROM books");
