@@ -2,11 +2,9 @@
 // change header and pass correct role
 $role = $_POST["role"];
 if ($role === '0') {
-    header('Location: studentaccount.php');
-    exit(); 
-} elseif ($role === '1') {
-    header('Location: teacheraccount.php');
-    exit(); 
+    header('Location: studentaccount.php');}
+  elseif ($role === '1') {
+     header('Location: teacheraccount.php');; 
 }
 
 // send back with the information still

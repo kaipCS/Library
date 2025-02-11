@@ -65,6 +65,7 @@
     <form class="form" action="signin.php" method="post" name="login">
     <div class="jumbotron text-center">
     <h1>Sign in to your account</h1>
+    <p> For testing purposes, use account number "123"and password "testteacher" or account number "456" and password "teststudent"</p>
     <div class="container">
     <label for="uname"><b>Account number</b></label>
     <input type="text" class="login-input" name="accountnumber" placeholder="Account Number">
