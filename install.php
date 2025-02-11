@@ -5,6 +5,8 @@
    $password= '';
 //note no Database mentioned here!!
 
+// install testing data initally
+
 try {
     $conn = new PDO("mysql:host=$servername", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -49,6 +51,14 @@ $conn->exec($sql);
     ");
     $stmt->execute();
     $stmt->closeCursor();
+
+    // $hashedPassword = password_hash("password", PASSWORD_DEFAULT);
+    // $stmt2 = $conn->prepare("
+    // INSERT INTO users (accountnumber, firstname, surname, password, email, role) VALUES
+    // (123, Test, Teacher, 'XXXXXXXXXX', 18,1),
+    // (456, 'Ramesh', 'Gurgaon', 'XXXXXXXXXX', 18,0),
+    // $stmt2->execute();
+    // $stmt2->closeCursor();
 }
 catch(PDOException $e)
 {

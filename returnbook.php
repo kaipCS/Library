@@ -103,7 +103,7 @@
 
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="frontpage.php">Library Home</a></li>
+                    <li><a href="frontpage.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Library home</a></li>
                     <li><a href="returnbook.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Return</a></li>
                     <li><a href="signinform.php">Sign Out</a></li>
                 </ul>
@@ -136,7 +136,7 @@
 
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="frontpage.php">Library Home</a></li>
+                <li><a href="frontpage.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Library home</a></li>
                     <li><a href="returnbook.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Return</a></li>
                     <li><a href="signinform.php">Sign Out</a></li>
                     <li><a href="booksform.php?accountnumber=<?php echo $accountnumber; ?>">Add book</a></li>
@@ -170,6 +170,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
       echo "<img src='images/{$row['cover']}' alt='Book Cover' style='width:200px;'><br>";
       echo "<form action='return.php' method='post'>
             <input type='hidden' name='accountnumber' value='$accountnumber'>
+            <input type='hidden' name='role' value='$role'>
             <input type='hidden' name='isbn' value='$isbn'>
             <button type='submit'>Return</button>
         </form>";

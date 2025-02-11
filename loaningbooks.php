@@ -2,6 +2,8 @@
 <select name = "student">
 <?php
 include_once("connection.php");
+
+// user 456 cant loan 12345
 $stmt = $conn->prepare("SELECT * FROM users ORDER BY surname ASC");
 $stmt->execute();
 while ($row = $stmt ->fetch(PDO::FETCH_ASSOC))
