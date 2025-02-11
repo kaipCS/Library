@@ -9,6 +9,7 @@ try {
 
     $conn->exec("CREATE DATABASE IF NOT EXISTS library");
     $conn->exec("USE library");
+
     $conn->exec("
         DROP TABLE IF EXISTS books;
         CREATE TABLE books (
@@ -17,7 +18,7 @@ try {
             author VARCHAR(30) NOT NULL,
             genre VARCHAR(30) NOT NULL,
             description TEXT NOT NULL,
-            cover VARCHAR(30) NOT NULL,
+            cover VARCHAR(50) NOT NULL,
             onloan TINYINT(1) NOT NULL,
             shelf INT(2) NOT NULL,
             fictionornot TINYINT(1) NOT NULL
@@ -49,6 +50,7 @@ try {
         INSERT INTO users (accountnumber, firstname, surname, password, email, role) 
         VALUES (:accountnumber, :firstname, :surname, :password, :email, :role)
     ");
+
     $accountnumber = "123"; 
     $firstname = "Test";
     $surname = "Teacher";
@@ -64,6 +66,7 @@ try {
     $stmt->bindParam(':role', $role, PDO::PARAM_INT);
     $stmt->execute();
 
+
     $accountnumber = "456";
     $firstname = "Testing";
     $surname = "Student";
@@ -73,11 +76,50 @@ try {
 
     $stmt->execute();
 
-    echo "Database and tables created successfully. Test users inserted.";
+    echo "Database and tables created successfully. Test users inserted.<br>";
 
-    // add test books 
-} 
-catch(PDOException $e) {
+  
+    $stmt1 = $conn->prepare("
+        INSERT INTO books (isbn, title, author, genre, description, cover, onloan, shelf, fictionornot) 
+        VALUES (:isbn, :title, :author, :genre, :description, :cover, :onloan, :shelf, :fictionornot)
+    ");
+
+    $isbn = "0140186425"; 
+    $title = "Of Mice and Men";
+    $author = "John Steinbeck";
+    $genre = "Tragedy";
+    $description = "Over seventy-five years since its first publication, Steinbeck's tale of commitment, loneliness...";
+    $cover = "OMAM.jpg";
+    $onloan = 0;
+    $shelf = 10;
+    $fictionornot = 1;
+
+    $stmt1->bindParam(':isbn', $isbn, PDO::PARAM_STR);
+    $stmt1->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt1->bindParam(':author', $author, PDO::PARAM_STR);
+    $stmt1->bindParam(':genre', $genre, PDO::PARAM_STR);
+    $stmt1->bindParam(':description', $description, PDO::PARAM_STR);
+    $stmt1->bindParam(':cover', $cover, PDO::PARAM_STR);
+    $stmt1->bindParam(':onloan', $onloan, PDO::PARAM_INT);
+    $stmt1->bindParam(':shelf', $shelf, PDO::PARAM_INT);
+    $stmt1->bindParam(':fictionornot', $fictionornot, PDO::PARAM_INT);
+    $stmt1->execute();
+
+    $isbn = "052129455X"; 
+    $title = "Macbeth";
+    $author = "William Shakespeare";
+    $genre = "Play";
+    $description = "One of Shakespeare's greatest, but also bloodiest tragedies, was written around 1605/06...";
+    $cover = "macbeth.jpg";
+    $onloan = 0;
+    $shelf = 11;
+    $fictionornot = 1;
+
+    $stmt1->execute();
+
+    echo "Test books inserted successfully.";
+
+} catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 

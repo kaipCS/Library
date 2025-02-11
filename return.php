@@ -1,16 +1,13 @@
 <?php
 include_once('connection.php');
 session_start();
-// this does not work
 $_SESSION['accountnumber'] = $_POST["accountnumber"];
 $_SESSION['role'] = $_POST["role"];
 $role = $_POST["role"];
 if ($role === '0') {
     header('Location: studentaccount.php');
-    exit(); 
 } elseif ($role === '1') {
     header('Location: teacheraccount.php');
-    exit(); 
 }
 array_map("htmlspecialchars", $_POST);
 

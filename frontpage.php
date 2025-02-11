@@ -155,7 +155,8 @@
 <?php } ?>
 
     <div class="container">
-        <h2>Books in library  </h2>
+        <h2>Books in library</h2>
+        <h3>Books can be loanded by searching by ISBN</h3>
     <?php
 include_once ("connection.php");
 $stmt = $conn -> prepare("SELECT * FROM books");
@@ -163,7 +164,7 @@ $stmt -> execute();
 while ($row = $stmt -> fetch(PDO::FETCH_ASSOC))
 
 {
-    echo($row["title"]." ". $row["author"]." ". $row["genre"]." ". $row["description"]." ". $row["shelf"]."ISBN: ". $row["isbn"]." ". "<br>");   
+    echo($row["title"]." ". $row["author"]." ". $row["genre"]." Shelf number: ". $row["shelf"]."  ISBN:  ". $row["isbn"]." ". "<br>");   
     echo ('<img src="images/'.$row["cover"].'"><br>');
 }
 ?>   
