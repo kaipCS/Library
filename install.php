@@ -52,13 +52,14 @@ $conn->exec($sql);
     $stmt->execute();
     $stmt->closeCursor();
 
-    // $hashedPassword = password_hash("password", PASSWORD_DEFAULT);
-    // $stmt2 = $conn->prepare("
-    // INSERT INTO users (accountnumber, firstname, surname, password, email, role) VALUES
-    // (123, Test, Teacher, 'XXXXXXXXXX', 18,1),
-    // (456, 'Ramesh', 'Gurgaon', 'XXXXXXXXXX', 18,0),
-    // $stmt2->execute();
-    // $stmt2->closeCursor();
+    $pass1= password_hash("testteacher", PASSWORD_DEFAULT);
+    $pass2= password_hash("teststudent", PASSWORD_DEFAULT);
+    $stmt2 = $conn->prepare("
+    INSERT INTO users (accountnumber, firstname, surname, password, email, role) VALUES
+    (123, Test, Teacher, $pass1, testteacher@school.com,1),
+    (456, Test, Student, $pass2, teststudent@schoo.com,0");
+    $stmt2->execute();
+    $stmt2->closeCursor();
 }
 catch(PDOException $e)
 {
