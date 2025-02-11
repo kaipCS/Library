@@ -170,6 +170,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
       echo "<img src='images/{$row['cover']}' alt='Book Cover' style='width:200px;'><br>";
       echo "<form action='return.php' method='post'>
             <input type='hidden' name='accountnumber' value='$accountnumber'>
+            <input type='hidden' name='role' value='$role'>
             <input type='hidden' name='isbn' value='$isbn'>
             <button type='submit'>Return</button>
         </form>";

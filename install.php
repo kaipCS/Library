@@ -5,6 +5,8 @@
    $password= '';
 //note no Database mentioned here!!
 
+// install testing data initally
+
 try {
     $conn = new PDO("mysql:host=$servername", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
