@@ -118,7 +118,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="frontpage.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Library home</a></li>
                     <li><a href="returnbook.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Return</a></li>
-                    <li><a href="signinform.php">Sign Out</a></li>
+                    <li><a href="index.php">Sign Out</a></li>
                 </ul>
 
                 <form class="navbar-form navbar-right" action="search.php" method="get">
@@ -150,7 +150,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
                 <ul class="nav navbar-nav navbar-right">
                 <li><a href="frontpage.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Library home</a></li>
                     <li><a href="returnbook.php?accountnumber=<?php echo $accountnumber; ?>&role=<?php echo $role; ?>">Return</a></li>
-                    <li><a href="signinform.php">Sign Out</a></li>
+                    <li><a href="index.php">Sign Out</a></li>
                     <li><a href="booksform.php?accountnumber=<?php echo $accountnumber; ?>">Add book</a></li>
                     <li><a href="usersform.php?accountnumber=<?php echo $accountnumber; ?>">Add user</a></li>
                 </ul>

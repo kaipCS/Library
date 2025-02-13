@@ -29,7 +29,7 @@
                exit();
             } else {
                 //echo "<p style='color:red;'>Invalid login credentials.</p>";
-                header('Location:signinform.php');
+                header('Location:index.php');
             }
     } 
 ?>
